@@ -192,7 +192,7 @@ article{
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-color: rgb(255, 255, 255);
     margin: 1%;
-    height: 310px;
+    height: 320px;
     overflow: hidden;
     
 }
@@ -208,7 +208,7 @@ article{
 .newsImg{
     
     width: 350px;
-    height: 250px;
+    height: 200px;
 }
 
 /*Normal css*/
