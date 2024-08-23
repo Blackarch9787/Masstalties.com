@@ -8,9 +8,10 @@
 </head>
 <body class="body">
     <header>
-        <nav>
-            <h1 class="title"><marquee><span class="highlight">Masstalkies-(2024) </span>- News Portal.Com</marquee></h1>
-            <a href="https://www.instagram.com/masstalkies.mt/"> <div class="instagram"><ion-icon name="logo-instagram"></ion-icon></div></a>
+        <h1 class="title"><marquee><span class="highlight">Masstalkies-(2024) </span>- News Portal.Com</marquee></h1>
+           
+        <nav class="nav">
+             <a href="https://www.instagram.com/masstalkies.mt/"> <div class="instagram"><ion-icon name="logo-instagram"></ion-icon></div></a>
             <button class="buttonLogin">Login</button>
         </nav>
     </header>
@@ -156,10 +157,10 @@
                     //create artical
                    // Create a new article element using innerHTML
                     const articleHTML = `
-                    <article>
-                    <h3>${data.Title}</h3>
-                    <h5>${data.Subject}</h5>
-                    <p>${data.Content}</p>
+                    <article class="artical"><div class="newsArtical">
+                    <h3 class="newsTitle">${data.Title}</h3>
+                    <h5 class="newsSubject">${data.Subject}</h5>
+                    <p class="newsContent">${data.Content}</p></div>
                     </article>
                     `;
 
