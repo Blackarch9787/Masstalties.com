@@ -1,1 +1,194 @@
-<html></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <title>Masstalkies.com</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="body">
+    <header>
+        <nav>
+            <ul><a href="https://www.instagram.com/masstalkies.mt/"> <div class="instagram"><ion-icon name="logo-instagram"></ion-icon></div></a></ul>
+            <ul> <button class="buttonLogin">Login</button></ul>
+        </nav>
+    </header>
+    <div id="cover" class="cover">
+        <div class="wrapper" >
+        <span class="closeIcon"><ion-icon name="close-outline"></ion-icon></span>
+        <div class="loginBox">
+            <h2>Login</h2>  
+                <div class="inputbox">
+                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                    <input type="email" name="email" id="emailL" required>
+                    <label>Email</label>
+                </div>
+                <div class="inputbox">
+                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                    <input type="password" name="password" id="passwordL" required>
+                    <label>Password</label>
+                </div>
+               <input type="submit" id="signin" value="Login" class="btn">
+                <div class="loginRegister">
+                    <p>Don't Have an account  <a href="#" class="registerlink">Register</a></p>
+                </div>  
+        </div>
+
+        <div class="registerBox">
+            <h2>Register</h2>
+            <div class="form">
+                <div class="inputbox">
+                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                    <input type="email" name="email" id="emailC" required>
+                    <label>Email</label>
+                </div>
+                <div class="inputbox">
+                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                    <input type="password" name="password" id="passwordC" required>
+                    <label>Password</label>
+                </div>
+                <input type="submit" id="signup" value="Create Account" class="btn">
+                <div class="loginRegister">
+                    <p> Alredy have an account  <a href="#" class="loginlink">Login</a></p>
+                </div>
+            </div>
+            
+        </div>
+
+
+        </div>
+    </div>
+    <main id="main">
+        <section id="top-news">
+            <h2>News</h2>
+            <table class="table">
+
+            </table>
+            
+            <!-- News articles will be dynamically added here -->
+        </section>
+   
+    </main>
+    <footer>
+        <a href="https://www.instagram.com/masstalkies.mt/"> <div class="instagram"><ion-icon name="logo-instagram"></ion-icon></div></a>
+         <p><span class="highlight">&copy; 2024 News Portal.</span> All rights reserved.</p>
+     </footer>
+     <script type="module">
+        // Import the firebase library
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+        import { getDatabase, ref,set, child, get} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    
+        //firebase api key
+        const firebaseConfig = {
+            apiKey: "AIzaSyDH91jgSKu8tZ2ejyAHwfdTgC5TcqJ4S_k",
+            authDomain: "tutinews9787.firebaseapp.com",
+            databaseURL: "https://tutinews9787-default-rtdb.firebaseio.com",
+            projectId: "tutinews9787",
+            storageBucket: "tutinews9787.appspot.com",
+            messagingSenderId: "119887551138",
+            appId: "1:119887551138:web:a2bf8fb758b0eed01015fb",
+            measurementId: "G-XWL9RWC9LN"
+        };
+
+        // Initialize Firebase variable
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const db = getDatabase(app);
+        const dbref=ref(db,'news/')
+        const auth = getAuth();
+        console.log(app);
+        console.log(dbref);
+
+            
+    // Create new user account .....
+    signup.addEventListener("click",(e)=>{
+      var email=document.getElementById("emailC").value;
+      var password=document.getElementById("passwordC").value;
+      console.log(auth);
+     
+      createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
+        const user = userCredential.user;
+        console.log("created New user account successfully....");
+        alert("created New user account successfully....");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage);
+        console.log(errorMessage)
+      });
+    })
+    // Login to new usert account ... 
+    signin.addEventListener("click",(e)=>{
+      var email=document.getElementById("emailL").value;
+      var password=document.getElementById("passwordL").value;
+    
+      signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
+        const user = userCredential.user;
+        console.log("successfully loggedin",user);
+        
+        window.location.href="upload.html";
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage);
+        console.log(errorMessage)
+      
+        
+      });
+
+    })
+        //Reading data on database
+        
+        get(ref(db, 'news')).then((snapshot) => {
+            if (snapshot.exists()) {
+                snapshot.forEach((childSnapshot) => {
+                    const datetime = childSnapshot.key;
+                    const data = childSnapshot.val();
+                    const section=document.getElementById("top-news");
+                    console.log("snapshot val:",snapshot.val());
+                    console.log("childsnapshot val:",childSnapshot.val());
+                    console.log("childsnap key:",childSnapshot.key)
+                    console.log(`Title: ${data.Title}`);
+                    console.log(`Subject: ${data.Subject}`);
+                    console.log(`Content: ${data.Content}`);
+                    //create artical
+                   // Create a new article element using innerHTML
+      const articleHTML = `
+        <article>
+          <h3>${data.Title}</h3>
+          <h5>${data.Subject}</h5>
+          <p>${data.Content}</p>
+        </article>
+      `;
+
+      // Append the article to the section
+      section.innerHTML += articleHTML;
+    });
+  
+                   
+
+                   
+                    
+                
+                
+            }else {
+            console.log("No data available");
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+        });  
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="login1.js"></script>
+
+
+
+    
+</body>
+</html>
