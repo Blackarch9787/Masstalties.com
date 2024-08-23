@@ -60,7 +60,7 @@
 
         </div>
     </div>
-    <main id="main">
+     <main id="main">
         <section id="top-news">
             <h2>News</h2>
             <table class="table">
@@ -154,13 +154,23 @@
                     console.log(`Title: ${data.Title}`);
                     console.log(`Subject: ${data.Subject}`);
                     console.log(`Content: ${data.Content}`);
-                    //create artical
-                   // Create a new article element using innerHTML
+                    //create article 
+
                     const articleHTML = `
                     <article class="artical"><div class="newsArtical">
+                    <table>
+                    <tr>
+                    <td>
+                    <img src="${data.ImgUrl}" >
+                    <small>${data.Datetime}</small>
+                    </td>
+                    <td>
                     <h3 class="newsTitle">${data.Title}</h3>
                     <h5 class="newsSubject">${data.Subject}</h5>
                     <p class="newsContent">${data.Content}</p></div>
+                    </td>
+                    </tr>
+                    </table>
                     </article>
                     `;
 
