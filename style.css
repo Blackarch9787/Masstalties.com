@@ -305,6 +305,11 @@ form button:hover {
         height: 350px;
 
     }
+    .newsImg{
+    
+        width: 340px;
+        height: 190px;
+    }
 
 
 }
