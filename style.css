@@ -187,6 +187,30 @@ input{
     display: none;
 }
 
+/*News artical Section*/
+article{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: rgb(255, 255, 255);
+    margin: 1%;
+    height: 310px;
+    overflow: hidden;
+    
+}
+.newsArtical .newsTitle .newsContent{
+    margin: 1%;
+}
+.td1{
+    margin: 2%;
+    display: inline-block;
+    position:static;
+    
+}
+.newsImg{
+    
+    width: 350px;
+    height: 250px;
+}
+
 /*Normal css*/
 header {
     background-color: #333;
@@ -194,6 +218,7 @@ header {
     width: 100%;
     position: sticky;
     top: 0;
+    overflow: hidden;
     a:hover{
         color: aqua;
         font: 1em sans-serif;
@@ -232,15 +257,7 @@ footer {
     font-size: xx-large;
     font-weight: bolder;    
 }
-article{
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: rgb(255, 255, 255);
-    margin: 1%;
-    
-}
-.newsArtical{
-    margin: 1%;
-}
+
 
 section {
     margin-bottom: 20px;
@@ -274,6 +291,7 @@ form button {
 form button:hover {
     background-color: #646363;
 }
+
 @media only screen and (max-width: 600px) {
     .wrapper{
         width: 90%;
