@@ -205,6 +205,9 @@ article{
     position:static;
     
 }
+td{
+    margin: 1%;
+}
 .newsImg{
     
     width: 350px;
@@ -296,6 +299,10 @@ form button:hover {
     .wrapper{
         width: 90%;
         height: 450px;
+
+    }
+    artical{
+        height: 350px;
 
     }
 
