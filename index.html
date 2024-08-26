@@ -155,7 +155,6 @@
                     console.log(`Subject: ${data.Subject}`);
                     console.log(`Content: ${data.Content}`);
                     //create article 
-
                     const articleHTML = `
                     <article class="artical"><div class="newsArtical">
                     <table>
@@ -163,7 +162,7 @@
                     <td class="td1">
                     <small class="newsSmall">${data.Datetime}</small>
                     <img src="${data.ImgUrl}" class="newsImg" >
-                    <a href="images/back9.jpg"><h4 class="newsTitle">${data.Title}</h4></a>
+                    <a href="news-article.html?title=${data.Title}"><h4 class="newsTitle">${data.Title}</h4></a>
                     </td>
                     <td class-"td2">
                     <h5 class="newsSubject">${data.Subject}</h5>
@@ -174,6 +173,13 @@
                     </article>
                     `;
 
+// ...
+                    // ...
+
+
+
+
+                   
                     // Append the article to the section
                     section.innerHTML += articleHTML;
                 });
