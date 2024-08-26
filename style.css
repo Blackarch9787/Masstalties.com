@@ -10,8 +10,7 @@
     color: #fff;
     font-weight: 500;
     margin: 2%;
-    transition: .5%;
-    
+    transition: .5%; 
 }
 .buttonLogin:hover{
     background: #fff;
@@ -108,9 +107,7 @@ input{
     align-items: center;
     background-image: url(images/back9.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
-    
-    
+    background-size: cover; 
 }
 .wrapper{
     position: absolute;
@@ -203,10 +200,11 @@ article{
     margin: 2%;
     display: inline-block;
     position:static;
+    width: 400px;
     
 }
 td{
-    margin: 1%;
+    margin: 2%;
 }
 .newsImg{
     
@@ -230,10 +228,8 @@ header {
     }
   
 }
-
 body {
     font-family: Arial, sans-serif;
-    
     background-color: #e4e2e2;
     color: #333;
     display: block;
@@ -260,8 +256,6 @@ footer {
     font-size: xx-large;
     font-weight: bolder;    
 }
-
-
 section {
     margin-bottom: 20px;
 }
@@ -303,10 +297,15 @@ form button:hover {
     }
     article{
         height: 350px;
+        
+
+    }
+    .td1{
+        width: 450px;
 
     }
     .newsImg{
-    
+        margin: 1%;
         width: 340px;
         height: 190px;
     }
